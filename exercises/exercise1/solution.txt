@@ -1,0 +1,12 @@
+04: Computer Networks and the TCP/IP Protocol Stack
+Lab2(5)
+
+Exercise 1: 	Print a list of just the IP addresses of the HTTP responses
+		from file webserver-eth0-traffic4.pcap and save them in a
+		file called ip_addresses.txt
+
+		Command used was:
+
+		$ tshark -r /vagrant/webserver-eth0-traffic4.pcap -Y http.response
+		-T fields -e ip.src | sort | uniq | sort -n >& 
+		/vagrant/exercises/exercise1/ip_addresses.txt 
