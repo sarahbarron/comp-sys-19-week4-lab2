@@ -1,7 +1,7 @@
 # 04: Computer Networks and the TCP/IP Protocol Stack
-...
+
 ## Lab 2
-==========
+
 ### webserver-eth1-traffic1.pcap
 ---------------------------------
 This file contains the recording of 10 ICMP packets on eth1 interface
@@ -62,7 +62,7 @@ Traffic created by requesting `wget` information from www.bbc.co.uk, www.wit.ie,
 ```$ tshark -r /vagrant/webserver-eth0-traffic4.pcap -Y http.request -T fields -e http.host -e http.user_agent | sort | uniq-c | sort -n```
 
 ### Exercise 1
-...
+-------------------
 solution.txt and ip_addresses.txt stored in folder /exercises/exercise1/
 
 Using the traffic captured in webserver-eth0-traffic4.pcap I was able to list just the unique IP addresses of the HTTP response, 
@@ -73,7 +73,7 @@ I used the following command to find, list and store these unique IP addresses
 
 
 ### Exercise 2
-...
+-------------------
 Stored in folder /exercises/exercise2/
 Script - solution.sh
 Stored MAC Address - solution.txt
