@@ -7,13 +7,17 @@
 # a filename and the second argument is a MAC address
 # The program then checks if the MAC address was a source address of ethernet frames
 
-
+# check for 2 command line arguments if there isn't exactly 2 send a message to user
 if [ $# -ne 2 ]
 then
+	echo
 	echo "Please enter 2 command line arguments"
-	echo "argument 1 should be the pcap file you want to check"
-	echo "argument 2 should be the MAC address you want to check for"
-	echo  $0 file.pcap  MAC address
+	echo
+	echo "argument 1 - should be the pcap file you want to check"
+	echo "argument 2 - should be the MAC address you want to check for"
+	echo
+	echo  "eg: $0 file.pcap  MAC"
+	echo 
 
 else
 # command  reads in the first argument which is the file to be used
