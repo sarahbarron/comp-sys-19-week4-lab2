@@ -94,13 +94,13 @@ I used the following command to find, list and store these unique IP addresses
 ### Exercise 2
 -------------------
 * Stored in folder /exercises/exercise2/
-- Script - solution.sh
-- Stored MAC Address - solution.txt
-- Pcap file - webserver-eth1-traffic2.pcap
+    - Script - solution.sh
+    - Stored MAC Address - solution.txt
+    - Pcap file - webserver-eth1-traffic2.pcap
 
 1. Using `ifconfig` I was able to find out the MAC address of interface eth1 on dbserver
 
-* MAC address: 08:00:27:5a:8c:ca
+    MAC address: 08:00:27:5a:8c:ca
 
 2. I started tshark on interface eth1 on webserver and captured 20 packets
 
