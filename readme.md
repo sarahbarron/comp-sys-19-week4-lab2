@@ -13,6 +13,7 @@ I entered the following command in the webserver to create this file
 ### webserver-eth0-traffic1.pcap
 ---------------------------------
 Capture and analyse remote ICMP Data
+
 This file contains the recordings of ICMP packets this time on the eth0
 interface. This recording includes pings made to google.ie, www.cisco.com
 and www.yahoo.com
@@ -24,6 +25,7 @@ I entered the following command in the webserver to create this file
 ### webserver-eth0-traffic2.pcap
 ---------------------------------
 FTP PDU Capture
+
 This file contains recordings of FTP network traffic. Traffic was captured 
 on the webserver network interface eth0, filtering to port 20 and 21.
 
@@ -34,19 +36,25 @@ In the webserver i entered the following commands to create this file
 ```$ ftp speedtest.tele2.net```
  
 #### Lab2(3) Question 5
-------------------------
+
 I examined the output, of an FTP frame and could see the protocols encapsulated
 
 Encapsulation Type - Ethernet (1)
+
 Protocols in Frame - eth:ethertype:ip:tcp:ftp
+
 Ethernet II
+
 Internet Protocol Version 4
+
 Transmission Control Protocol
+
 File Transfer Protocol (FTP)  
 
 ### webserver-eth0-traffic3.pcap
 ----------------------------------
 HTTP PDU Capture
+
 This file contains recording of captured tcp traffic on port 80. 
 
 The command I entered to create this file was
@@ -60,17 +68,22 @@ followed by `wget http://www.google.ie` this retrieved content from google, caus
 Here a large amount of captured tcp network traffic are sorted into unique website addresses, 
 they are sorted and stored alphabetically in this file.
 
+* Capturing the traffic
+
 ```$tshark -w /vagrant/webserver-eth0-traffic4.pcap -i eth0 -f "tcp port 80" >& /dev/null &```
 
-Traffic created by requesting `wget` information from www.bbc.co.uk, www.wit.ie, www.yahoo.ie, www.rte.ie and www.facebook.com
+* Traffic was created by requesting `wget` information from www.bbc.co.uk, www.wit.ie, www.yahoo.ie, www.rte.ie and www.facebook.com
+
+* Filtering the traffic by unique website addresses and sorting them alphabetically
 
 ```$ tshark -r /vagrant/webserver-eth0-traffic4.pcap -Y http.request -T fields -e http.host -e http.user_agent | sort | uniq-c | sort -n```
 
 ### Exercise 1
 -------------------
-solution.txt and ip_addresses.txt stored in folder /exercises/exercise1/
+* solution.txt and ip_addresses.txt are stored in folder /exercises/exercise1/
 
-Using the traffic captured in webserver-eth0-traffic4.pcap I was able to list just the unique IP addresses of the HTTP response, 
+Using the traffic captured in webserver-eth0-traffic4.pcap I was able to list just the unique IP addresses of the HTTP response.
+
 I stored these IP addresses in ip_addresses.txt.
 
 I used the following command to find, list and store these unique IP addresses
@@ -80,22 +93,22 @@ I used the following command to find, list and store these unique IP addresses
 
 ### Exercise 2
 -------------------
-Stored in folder /exercises/exercise2/
-Script - solution.sh
-Stored MAC Address - solution.txt
-Pcap file - webserver-eth1-traffic2.pcap
+* Stored in folder /exercises/exercise2/
+- Script - solution.sh
+- Stored MAC Address - solution.txt
+- Pcap file - webserver-eth1-traffic2.pcap
 
-..1 Using `ifconfig` I was able to find out the MAC address of interface eth1 on dbserver
+1. Using `ifconfig` I was able to find out the MAC address of interface eth1 on dbserver
 
-..* MAC address: 08:00:27:5a:8c:ca
+* MAC address: 08:00:27:5a:8c:ca
 
-..2 I started tshark on interface eth1 on webserver and captured 20 packets
+2. I started tshark on interface eth1 on webserver and captured 20 packets
 
 ```$tshark -i eth1 -c 20 -w webserver-eth1-traffic2.pcap``` 
 
-..3 I pinged the webserver (192.168.5.2) from both the host and the dbserver
+3. I pinged the webserver (192.168.5.2) from both the host and the dbserver
 
-..4 The script solution.sh takes in 2 parameteres the first parameter is the name of the pcap 
+4. The script solution.sh takes in 2 parameteres the first parameter is the name of the pcap 
 file and the second parameter is the MAC address you want to check if its a source address of 
 ethernet frames. 
 
